@@ -187,6 +187,10 @@
     .table-cell {
         @apply w-fit whitespace-nowrap p-4 font-medium;
     }
+
+    .custom-range-picker .ant-picker {
+        @apply bg-slate-100 dark:bg-slate-900 text-foreground min-w-[150px];
+    }
 }
 
 .recharts-default-tooltip {

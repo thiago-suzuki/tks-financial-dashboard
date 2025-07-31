@@ -1,5 +1,6 @@
 import { isAuthenticated } from "@/auth"
 import { Layout } from "@/components"
+import { FilterProvider } from "@/contexts"
 import { redirect } from "next/navigation"
 
 export default async function TKSFinancialLayout({
@@ -14,8 +15,10 @@ export default async function TKSFinancialLayout({
   }
 
   return (
-    <Layout>
-      {children}
-    </Layout>
+    <FilterProvider>
+      <Layout>
+        {children}
+      </Layout>
+    </FilterProvider>
   )
 }

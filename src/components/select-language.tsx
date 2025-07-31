@@ -40,13 +40,13 @@ export function SelectLanguage() {
 
   return (
     <Select value={locale} onValueChange={handleChange}>
-      <SelectTrigger className="bg-transparent text-foreground pl-10 min-w-[200px] relative">
+      <SelectTrigger className="bg-slate-100 dark:bg-slate-900 text-foreground pl-10 min-w-[200px] relative">
         <span className="absolute left-2 top-1/2 -translate-y-1/2 pointer-events-none">
           <Image src={selected?.flag || ''} alt="flag" width={20} height={14} className="rounded-sm" />
         </span>
         <SelectValue>{selected?.label}</SelectValue>
       </SelectTrigger>
-      <SelectContent className="bg-slate-900 text-foreground border border-border">
+      <SelectContent className="bg-slate-100 dark:bg-slate-900 text-foreground border border-border">
         {locales.map((l) => (
           <SelectItem key={l.code} value={l.code} className="flex items-center gap-2">
             <Image src={l.flag} alt={l.label} width={20} height={14} className="rounded-sm mr-2" />
