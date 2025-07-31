@@ -1,0 +1,30 @@
+{
+    "Pages": {
+        "Login": {
+            "welcome-message": "Bem-vindo! Comece sua sessão abaixo."
+        }
+    },
+    "Components": {
+        "Header": {
+            "exit": "Sair",
+            "languages": {
+                "en": "Inglês",
+                "es": "Espanhol",
+                "pt-br": "Português"
+            }
+        },
+        "SignInForm": {
+            "email-label": "E-mail",
+            "email-placeholder": "Digite seu e-mail",
+            "email-required": "Email é obrigatório",
+            "email-error": "Por favor, digite um e-mail válido",
+            "password-label": "Senha",
+            "password-placeholder": "Digite sua senha",
+            "password-required": "Senha é obrigatória",
+            "password-error": "A senha deve ter pelo menos 3 caracteres",
+            "button-sign-in": "Entrar",
+            "error-message": "Email ou senha inválidos",
+            "success-message": "Login efetuado com sucesso"
+        }
+    }
+}

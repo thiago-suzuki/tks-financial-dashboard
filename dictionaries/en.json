@@ -1,0 +1,30 @@
+{
+  "Pages": {
+    "Login": {
+      "welcome-message": "Welcome! Start your session below."
+    }
+  },
+  "Components": {
+    "Header": {
+      "exit": "Exit",
+      "languages": {
+        "en": "English",
+        "es": "Spanish",
+        "pt-br": "Portuguese"
+      }
+    },
+    "SignInForm": {
+        "email-label": "Email",
+        "email-placeholder": "Email address",
+        "email-required": "Email is required",
+        "email-error": "Please enter a valid email address",
+        "password-label": "Password",
+        "password-placeholder": "Enter your password",
+        "password-required": "Password is required",
+        "password-error": "Password must be at least 3 characters long",
+        "button-sign-in": "Sign in",
+        "error-message": "Invalid email or password",
+        "success-message": "Welcome back! You are now logged in."
+    }
+  }
+}

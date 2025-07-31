@@ -1,0 +1,30 @@
+{
+  "Pages": {
+    "Login": {
+      "welcome-message": "¡Bienvenido! Comienza tu sesión a continuación."
+    }
+  },
+  "Components": {
+    "Header": {
+      "exit": "Salir",
+      "languages": {
+        "en": "Inglés",
+        "es": "Español",
+        "pt-br": "Português"
+      }
+    },
+    "SignInForm": {
+      "email-label": "Email",
+      "email-placeholder": "Escribe tu email",
+      "email-required": "¡El email es obligatorio!",
+      "email-error": "¡Por favor, introduce un email válido!",
+      "password-label": "Contraseña",
+      "password-placeholder": "Escribe tu contraseña",
+      "password-required": "¡La contraseña es obligatoria!",
+      "password-error": "¡La contraseña debe tener al menos 3 caracteres!",
+      "button-sign-in": "Iniciar sesión",
+      "error-message": "¡Error al iniciar sesión! Por favor, comprueba tus credenciales e inténtalo de nuevo.",
+      "success-message": "¡Inicio de sesión exitoso!"
+    }
+  }
+}
