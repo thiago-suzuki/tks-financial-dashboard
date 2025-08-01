@@ -15,6 +15,7 @@ Financial Dashboard Website
 - [Shadcn](https://ui-v4.shadcn.com/) > Component library for NextJS
 - [Lucide React](https://lucide.dev/) > Icon library
 - [Next Intl](https://next-intl.dev/) > Library for text translation
+- [Recharts](https://recharts.org/en-US) > Library for Charts
 <br /><br />
 
 ## 💻 Running the Project
@@ -43,5 +44,7 @@ $ npm run dev
 
 <br /><br />
 
-## Deploy Link
+## Deploy Link and Credentials
 https://tks-financial.vercel.app
+Login: thiago@gmail.com
+Password: 123456
