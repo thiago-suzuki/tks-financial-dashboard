@@ -2,6 +2,20 @@
   "Pages": {
     "Login": {
       "welcome-message": "Welcome! Start your session below."
+    },
+    "Dashboard": {
+      "select-date": "Select dates...",
+      "Cards": {
+        "receipes": "Receipts",
+        "withdraws": "Withdrawals",
+        "transactions": "Transactions",
+        "total": "Total Balance"
+      },
+      "Chart": {
+        "title-bar-chart-one": "Total Expenses and Receipts by State",
+        "receipe": "Receipt",
+        "withdraws": "Withdrawal"
+      }
     }
   },
   "Components": {
@@ -11,7 +25,14 @@
         "en": "English",
         "es": "Spanish",
         "pt-br": "Portuguese"
-      }
+      },
+      "all-accounts": "All accounts",
+      "all-industries": "All industries",
+      "all-states": "All states",
+      "select-date": "Select date",
+      "select-dates": "Select dates",
+      "start-date": "Start Date",
+      "end-date": "End Date"
     },
     "SignInForm": {
         "email-label": "Email",

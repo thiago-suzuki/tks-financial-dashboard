@@ -2,6 +2,20 @@
     "Pages": {
         "Login": {
             "welcome-message": "Bem-vindo! Comece sua sessão abaixo."
+        },
+        "Dashboard": {
+            "select-date": "Selecione as datas...",
+            "Cards": {
+                "receipes": "Receitas",
+                "withdraws": "Despesas",
+                "transactions": "Transações",
+                "total": "Saldo Total"
+            },
+            "Chart": {
+                "title-bar-chart-one": "Total de Despesas e Receitas por Estado",
+                "receipe": "Receita",
+                "withdraws": "Despesa"
+            }
         }
     },
     "Components": {
@@ -11,7 +25,14 @@
                 "en": "Inglês",
                 "es": "Espanhol",
                 "pt-br": "Português"
-            }
+            },
+            "all-accounts": "Todas as contas",
+            "all-industries": "Todas as indústrias",
+            "all-states": "Todos os estados",
+            "select-date": "Selecione a data",
+            "select-dates": "Selecione as datas",
+            "start-date": "Data Início",
+            "end-date": "Data Fim"
         },
         "SignInForm": {
             "email-label": "E-mail",

@@ -2,6 +2,20 @@
   "Pages": {
     "Login": {
       "welcome-message": "¡Bienvenido! Comienza tu sesión a continuación."
+    },
+    "Dashboard": {
+      "select-date": "Selecciona las fechas...",
+      "Cards": {
+        "receipes": "Recibos",
+        "withdraws": "Retiros",
+        "transactions": "Transacciones",
+        "total": "Saldo Total"
+      },
+      "Chart": {
+        "title-bar-chart-one": "Total de Gastos y Recibos por Estado",
+        "receipe": "Recibo",
+        "withdraws": "Retiro"
+      }
     }
   },
   "Components": {
@@ -11,7 +25,14 @@
         "en": "Inglés",
         "es": "Español",
         "pt-br": "Português"
-      }
+      },
+      "all-accounts": "Todas las cuentas",
+      "all-industries": "Todas las industrias",
+      "all-states": "Todos los estados",
+      "select-date": "Seleccionar fecha",
+      "select-dates": "Seleccionar fechas",
+      "start-date": "Fecha de Inicio",
+      "end-date": "Fecha de Fin"
     },
     "SignInForm": {
       "email-label": "Email",

@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronsLeft, LogOut, Moon, Sun } from "lucide-react";
+import { ChevronDownIcon, ChevronsLeft, LogOut, Moon, Sun } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes"
@@ -9,6 +9,11 @@ import { useState } from "react";
 import { signOut } from "@/auth";
 import {
     Button,
+    Calendar,
+    Label,
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
     Select,
     SelectTrigger,
     SelectValue,
@@ -31,6 +36,9 @@ export function Header({ collapsed, setCollapsed }: HeaderProps) {
     const { theme, setTheme } = useTheme();
 
     const [open, setOpen] = useState(false);
+    const [openDates, setOpenDates] = useState(false);
+    const [openStartDate, setOpenStartDate] = useState(false);
+    const [openEndDate, setOpenEndDate] = useState(false);
 
     const {
         account,
@@ -38,7 +46,11 @@ export function Header({ collapsed, setCollapsed }: HeaderProps) {
         industry,
         setIndustry,
         state,
-        setState
+        setState,
+        startDate,
+        setStartDate,
+        endDate,
+        setEndDate
     } = useFilter()
 
     async function handleSignOut() {
@@ -55,14 +67,15 @@ export function Header({ collapsed, setCollapsed }: HeaderProps) {
                 >
                     <ChevronsLeft className={collapsed ? "rotate-180" : ""} />
                 </Button>
+
                 <div className="hidden lg:flex lg:items-center lg:gap-2">
                     <Select value={account} onValueChange={setAccount}>
                         <SelectTrigger className="bg-slate-100 dark:bg-slate-900 text-foreground min-w-[150px] relative">
-                            <SelectValue>{account === 'All' ? 'Todos' : account}</SelectValue>
+                            <SelectValue>{account === 'All' ? t('all-accounts') : account}</SelectValue>
                         </SelectTrigger>
 
                         <SelectContent className="bg-slate-100 dark:bg-slate-900 text-foreground border border-border">
-                            <SelectItem value="All">Todos</SelectItem>
+                            <SelectItem value="All">{t('all-accounts')}</SelectItem>
                             {accounts.map((a) => (
                                 <SelectItem key={a} value={a}>
                                     {a}
@@ -73,11 +86,11 @@ export function Header({ collapsed, setCollapsed }: HeaderProps) {
 
                     <Select value={industry} onValueChange={setIndustry}>
                         <SelectTrigger className="bg-slate-100 dark:bg-slate-900 text-foreground min-w-[150px] relative">
-                            <SelectValue>{industry === 'All' ? 'Todos' : industry}</SelectValue>
+                            <SelectValue>{industry === 'All' ? t('all-industries') : industry}</SelectValue>
                         </SelectTrigger>
 
                         <SelectContent className="bg-slate-100 dark:bg-slate-900 text-foreground border border-border">
-                            <SelectItem value="All">Todos</SelectItem>
+                            <SelectItem value="All">{t('all-industries')}</SelectItem>
                             {industries.map((i) => (
                                 <SelectItem key={i} value={i}>
                                     {i}
@@ -88,11 +101,11 @@ export function Header({ collapsed, setCollapsed }: HeaderProps) {
 
                     <Select value={state} onValueChange={setState}>
                         <SelectTrigger className="bg-slate-100 dark:bg-slate-900 text-foreground min-w-[150px] relative">
-                            <SelectValue>{state === 'All' ? 'Todos' : state}</SelectValue>
+                            <SelectValue>{state === 'All' ? t('all-states') : state}</SelectValue>
                         </SelectTrigger>
 
                         <SelectContent className="bg-slate-100 dark:bg-slate-900 text-foreground border border-border">
-                            <SelectItem value="All">Todos</SelectItem>
+                            <SelectItem value="All">{t('all-states')}</SelectItem>
                             {states.map((s) => (
                                 <SelectItem key={s} value={s}>
                                     {s}
@@ -102,7 +115,18 @@ export function Header({ collapsed, setCollapsed }: HeaderProps) {
                     </Select>
                 </div>
             </div>
+
             <div className="flex items-center gap-x-3">
+                <Button
+                    className="bg-black dark:bg-blue-500 text-white"
+                    onClick={() => {
+                        setOpenDates((v) => !v)
+                        setOpen(false)
+                    }}
+                >
+                    {t('select-dates')}
+                </Button>            
+
                 <Button 
                     variant="ghost"
                     className="btn-ghost size-10"
@@ -120,7 +144,10 @@ export function Header({ collapsed, setCollapsed }: HeaderProps) {
 
                 <button 
                     className="size-10 overflow-hidden rounded-full"
-                    onClick={() => setOpen((v) => !v)}
+                    onClick={() => {
+                        setOpen((v) => !v)
+                        setOpenDates(false)
+                    }}
                     aria-label="Abrir menu"
                 >
                     <Image
@@ -129,12 +156,75 @@ export function Header({ collapsed, setCollapsed }: HeaderProps) {
                         className="size-full object-cover"
                     />
                 </button>
+
                 {open && (
                     <div className="absolute right-4 top-16 bg-slate-100 dark:bg-slate-900 border border-border rounded shadow-lg flex flex-col gap-4 p-4 z-50 min-w-[180px]">
                         <SelectLanguage />
                         <Button variant="destructive" onClick={handleSignOut}>
                             <LogOut size={16} /> {t("exit")}
                         </Button>
+                    </div>
+                )}
+
+                {openDates && (
+                    <div className="absolute right-4 top-16 bg-slate-100 dark:bg-slate-900 border border-border rounded shadow-lg flex flex-col gap-4 p-4 z-50 min-w-[180px]">
+                       <div className="flex flex-col gap-3">
+                            <Label htmlFor="startDate" className="px-1">
+                                {t('start-date')}
+                            </Label>
+                            <Popover open={openStartDate} onOpenChange={setOpenStartDate}>
+                                <PopoverTrigger asChild>
+                                    <Button
+                                        variant="outline"
+                                        id="date"
+                                        className="w-40 justify-between font-normal"
+                                    >
+                                        {startDate ? startDate.toLocaleDateString(): t('select-date')}
+                                        <ChevronDownIcon />
+                                    </Button>
+                                </PopoverTrigger>
+                                <PopoverContent className="w-auto overflow-hidden p-0" align="start">
+                                <Calendar
+                                    mode="single"
+                                    selected={startDate!}
+                                    captionLayout="dropdown"
+                                    onSelect={(date) => {
+                                        setStartDate(date!)
+                                        setOpenStartDate(false)
+                                    }}
+                                />
+                                </PopoverContent>
+                            </Popover>
+                        </div>
+
+                        <div className="flex flex-col gap-3">
+                            <Label htmlFor="startDate" className="px-1">
+                                {t('end-date')}
+                            </Label>
+                            <Popover open={openEndDate} onOpenChange={setOpenEndDate}>
+                                <PopoverTrigger asChild>
+                                    <Button
+                                        variant="outline"
+                                        id="date"
+                                        className="w-40 justify-between font-normal"
+                                    >
+                                        {endDate ? endDate.toLocaleDateString() : t('select-date')}
+                                        <ChevronDownIcon />
+                                    </Button>
+                                </PopoverTrigger>
+                                <PopoverContent className="w-auto overflow-hidden p-0" align="start">
+                                <Calendar
+                                    mode="single"
+                                    selected={endDate!}
+                                    captionLayout="dropdown"
+                                    onSelect={(date) => {
+                                        setEndDate(date!)
+                                        setOpenEndDate(false)
+                                    }}
+                                />
+                                </PopoverContent>
+                            </Popover>
+                        </div>
                     </div>
                 )}
             </div>

@@ -1,6 +1,8 @@
 "use client";
 
 import { createContext, ReactNode, useContext, useState } from "react";
+import dayjs from "@/lib/dayjs"
+
 
 interface FilterContextData {
     account: string;
@@ -9,6 +11,10 @@ interface FilterContextData {
     setIndustry: (industry: string) => void;
     state: string;
     setState: (state: string) => void;
+    startDate: Date | null;
+    setStartDate: (date: Date) => void;
+    endDate: Date | null;
+    setEndDate: (date: Date) => void;
 }
 
 const FilterContext = createContext<FilterContextData>({} as FilterContextData)
@@ -17,6 +23,8 @@ function FilterProvider({ children }: { children: ReactNode }) {
     const [account, setAccount] = useState<string>('All')
     const [industry, setIndustry] = useState<string>('All')
     const [state, setState] = useState<string>('All')
+    const [startDate, setStartDate] = useState<Date | null>(null)
+    const [endDate, setEndDate] = useState<Date | null>(null)
 
     return (
         <FilterContext.Provider
@@ -26,7 +34,11 @@ function FilterProvider({ children }: { children: ReactNode }) {
                 industry,
                 setIndustry,
                 state,
-                setState
+                setState,
+                startDate,
+                setStartDate,
+                endDate,
+                setEndDate
             }}
         >
             {children}
