@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 import { SignInForm } from '@/components'
 
 export const metadata: Metadata = {
-  title: 'Login',
+  title: 'Login | TKS Financial',
 }
 
 export default function LoginPage() {
