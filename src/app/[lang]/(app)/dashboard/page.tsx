@@ -1,6 +1,6 @@
 "use client";
 
-import { BanknoteArrowDown, DollarSign, HandCoins } from "lucide-react";
+import { ArrowLeftRight, BanknoteArrowDown, DollarSign, HandCoins } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { Bar, BarChart, CartesianGrid, Legend, Rectangle, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
@@ -75,7 +75,7 @@ export default function DashboardPage() {
                 <div className="card">
                     <div className="card-header">
                         <div className="rounded-lg bg-blue-500/20 p-2 text-blue-500 transition-colors dark:bg-blue-600/20 dark:text-blue-600">
-                            <BanknoteArrowDown size={26} />
+                            <ArrowLeftRight size={26} />
                         </div>
                         <p className="card-title">{t('Cards.transactions')}</p>
                     </div>
@@ -99,7 +99,6 @@ export default function DashboardPage() {
                         </p>
                     </div>
                 </div>
-
             </div>
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-7">
@@ -131,6 +130,7 @@ export default function DashboardPage() {
                         </div>
                     </div>
                 </div>
+
                 <div className="card col-span-1 md:col-span-2 lg:col-span-3">
                     <div className="card-header">
                         <p className="card-title">{t('RecentRecipes.title')}</p>
