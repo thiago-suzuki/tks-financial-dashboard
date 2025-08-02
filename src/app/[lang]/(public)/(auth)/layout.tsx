@@ -14,7 +14,7 @@ export default async function AuthLayout({
 
   return (
     <div className="grid min-h-screen md:grid-cols-2">
-      <div className="hidden flex-col items-center justify-center bg-center bg-cover bg-gradient-to-r from-[#66666] to-[#5a018d] md:flex">
+      <div className="hidden flex-col items-center justify-center bg-center bg-cover bg-gradient-to-r from-[#66666] to-[#0F172B] md:flex">
         <h1 className="font-bold">
             <span className="text-7xl text-transparent bg-clip-text bg-gradient-to-r from-[#55D78E] to-[#1EA6BD]">TKS</span>
             <span className="ml-3 text-5xl">Financial</span>
