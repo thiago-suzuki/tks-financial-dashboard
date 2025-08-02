@@ -117,7 +117,7 @@ export function Header({ collapsed, setCollapsed }: HeaderProps) {
 
             <div className="flex items-center gap-x-3">
                 <Button
-                    className="bg-black dark:bg-blue-500 text-white"
+                    className="border bg-slate-100 hover:bg-gray-200 text-black dark:bg-slate-900 dark:hover:bg-slate-800 dark:text-white"
                     onClick={() => {
                         setOpenDates((v) => !v)
                         setOpen(false)

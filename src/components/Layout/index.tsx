@@ -1,13 +1,14 @@
 "use client";
 
-import { useMediaQuery } from "@uidotdev/usehooks";
-import { useClickOutside } from "@/hooks/use-click-outside";
-
-import { Sidebar } from "./Sidebar";
-import { Header } from "./Header";
-
-import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
+import { useMediaQuery } from "@uidotdev/usehooks";
+
+import { Footer } from "./Footer";
+import { Header } from "./Header";
+import { Sidebar } from "./Sidebar";
+
+import { useClickOutside } from "@/hooks/use-click-outside";
+import { cn } from "@/lib/utils";
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -52,6 +53,7 @@ export function Layout({ children }: LayoutProps) {
                 <div className="h-[calc(100vh-60px)] overflow-y-auto overflow-x-hidden p-6">
                     {children}
                 </div>
+                <Footer />
             </div>
         </div>
     );
