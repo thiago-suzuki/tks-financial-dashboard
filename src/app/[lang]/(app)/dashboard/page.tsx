@@ -3,10 +3,12 @@
 import { BanknoteArrowDown, DollarSign, HandCoins } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
-import { Bar, BarChart, CartesianGrid, Legend, Rectangle, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
+import { Bar, BarChart, CartesianGrid, Legend, Rectangle, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
+import predioImg from "@/assets/predio.jpg";
 import { useFilter } from "@/contexts";
 import { getTransactionSummary, TransactionSummary } from "@/services/getTransactionSummary";
+import Image from "next/image";
 
 
 export default function DashboardPage() {
@@ -100,7 +102,7 @@ export default function DashboardPage() {
 
             </div>
 
-            <div className="grid grid-cols-1">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-7">
                 <div className="card col-span-1 md:col-span-2 lg:col-span-4">
                     <div className="card-header">
                         <p className="card-title">{t('Chart.title-bar-chart-one')}</p>
@@ -127,6 +129,32 @@ export default function DashboardPage() {
                             </ResponsiveContainer>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div className="card col-span-1 md:col-span-2 lg:col-span-3">
+                    <div className="card-header">
+                        <p className="card-title">{t('RecentRecipes.title')}</p>
+                    </div>
+                    <div className="card-body h-[300px] overflow-auto p-0">
+                        {summary.recentDeposits.map((deposit) => (
+                            <div
+                                key={deposit.account + deposit.industry + deposit.amount}
+                                className="flex items-center justify-between gap-x-4 py-2 pr-2"
+                            >
+                                <div className="flex items-center gap-x-4">
+                                    <Image
+                                        src={predioImg}
+                                        alt={"PREDIO"}
+                                        className="size-10 flex-shrink-0 rounded-full object-cover"
+                                    />
+                                    <div className="flex flex-col gap-y-2">
+                                        <p className="font-medium text-slate-900 dark:text-slate-50">{t('RecentRecipes.date')}: {deposit.date}</p>
+                                        <p className="font-medium text-slate-900 dark:text-slate-50">{t('RecentRecipes.industry')}: {deposit.industry}</p>
+                                    </div>
+                                </div>
+                                <p className="font-medium text-slate-900 dark:text-slate-50">$ {deposit.amount}</p>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>

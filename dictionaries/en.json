@@ -15,6 +15,11 @@
         "title-bar-chart-one": "Total Expenses and Receipts by State",
         "receipe": "Receipt",
         "withdraws": "Withdrawal"
+      },
+      "RecentRecipes": {
+        "title": "Recent Receipts",
+        "date": "Date",
+        "industry": "Industry"
       }
     }
   },
@@ -29,7 +34,6 @@
       "all-accounts": "All accounts",
       "all-industries": "All industries",
       "all-states": "All states",
-      "select-date": "Select date",
       "select-dates": "Select dates",
       "start-date": "Start Date",
       "end-date": "End Date"

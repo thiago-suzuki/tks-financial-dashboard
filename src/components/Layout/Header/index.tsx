@@ -18,7 +18,8 @@ import {
     SelectTrigger,
     SelectValue,
     SelectContent,
-    SelectItem
+    SelectItem,
+    Input
 } from "@/components/ui";
 import profileImg from "@/assets/profile-image.jpg";
 import { SelectLanguage } from "@/components";
@@ -37,8 +38,6 @@ export function Header({ collapsed, setCollapsed }: HeaderProps) {
 
     const [open, setOpen] = useState(false);
     const [openDates, setOpenDates] = useState(false);
-    const [openStartDate, setOpenStartDate] = useState(false);
-    const [openEndDate, setOpenEndDate] = useState(false);
 
     const {
         account,
@@ -172,58 +171,24 @@ export function Header({ collapsed, setCollapsed }: HeaderProps) {
                             <Label htmlFor="startDate" className="px-1">
                                 {t('start-date')}
                             </Label>
-                            <Popover open={openStartDate} onOpenChange={setOpenStartDate}>
-                                <PopoverTrigger asChild>
-                                    <Button
-                                        variant="outline"
-                                        id="date"
-                                        className="w-40 justify-between font-normal"
-                                    >
-                                        {startDate ? startDate.toLocaleDateString(): t('select-date')}
-                                        <ChevronDownIcon />
-                                    </Button>
-                                </PopoverTrigger>
-                                <PopoverContent className="w-auto overflow-hidden p-0" align="start">
-                                <Calendar
-                                    mode="single"
-                                    selected={startDate!}
-                                    captionLayout="dropdown"
-                                    onSelect={(date) => {
-                                        setStartDate(date!)
-                                        setOpenStartDate(false)
-                                    }}
-                                />
-                                </PopoverContent>
-                            </Popover>
+
+                            <Input 
+                                type="date" id="startDate" 
+                                value={startDate?.toISOString().split('T')[0]} 
+                                onChange={(e) => setStartDate(new Date(e.target.value))} className="w-40" 
+                            />
                         </div>
 
                         <div className="flex flex-col gap-3">
                             <Label htmlFor="startDate" className="px-1">
                                 {t('end-date')}
                             </Label>
-                            <Popover open={openEndDate} onOpenChange={setOpenEndDate}>
-                                <PopoverTrigger asChild>
-                                    <Button
-                                        variant="outline"
-                                        id="date"
-                                        className="w-40 justify-between font-normal"
-                                    >
-                                        {endDate ? endDate.toLocaleDateString() : t('select-date')}
-                                        <ChevronDownIcon />
-                                    </Button>
-                                </PopoverTrigger>
-                                <PopoverContent className="w-auto overflow-hidden p-0" align="start">
-                                <Calendar
-                                    mode="single"
-                                    selected={endDate!}
-                                    captionLayout="dropdown"
-                                    onSelect={(date) => {
-                                        setEndDate(date!)
-                                        setOpenEndDate(false)
-                                    }}
-                                />
-                                </PopoverContent>
-                            </Popover>
+
+                            <Input 
+                                type="date" id="endDate" 
+                                value={endDate?.toISOString().split('T')[0]} 
+                                onChange={(e) => setEndDate(new Date(e.target.value))} className="w-40" 
+                            />
                         </div>
                     </div>
                 )}

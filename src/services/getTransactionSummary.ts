@@ -12,6 +12,14 @@ export type Transaction = {
   state: string;
 };
 
+export type RecentDeposit = {
+  date: string;
+  account: string;
+  industry: string;
+  state: string;
+  amount: number;
+};
+
 export type TransactionSummary = {
   totalBalance: number;
   transactionCount: number;
@@ -23,6 +31,7 @@ export type TransactionSummary = {
     deposit: number;
     withdraw: number;
   }[];
+  recentDeposits: RecentDeposit[];
 };
 
 export type TransactionFilters = {
@@ -59,12 +68,10 @@ export function getTransactionSummary(
   const withdrawTransactions = filtered.filter((t) => t.transaction_type === 'withdraw');
 
   const totalBalance = depositTransactions.reduce((sum, t) => {
-    // Converte string para float com 2 casas decimais
     const value = parseFloat((parseInt(t.amount, 10) / 100).toFixed(2));
     return sum + value;
   }, 0);
 
-  // Agrupamento por estado
   const groupedByState: Record<string, { deposit: number; withdraw: number }> = {};
 
   filtered.forEach((tx) => {
@@ -85,12 +92,24 @@ export function getTransactionSummary(
     withdraw: parseFloat(withdraw.toFixed(2)),
   }));
 
+  const recentDeposits: RecentDeposit[] = depositTransactions
+    .sort((a, b) => b.date - a.date)
+    .slice(0, 10)
+    .map((tx) => ({
+      date: dayjs(tx.date).format('DD/MM/YYYY'),
+      account: tx.account,
+      industry: tx.industry,
+      state: tx.state,
+      amount: parseFloat((parseInt(tx.amount, 10) / 100).toFixed(2)),
+  }));
+
   return {
     totalBalance: parseFloat(totalBalance.toFixed(2)),
     transactionCount: filtered.length,
     depositCount: depositTransactions.length,
     withdrawCount: withdrawTransactions.length,
     data: filtered,
-    amountByState
+    amountByState,
+    recentDeposits
   };
 }
