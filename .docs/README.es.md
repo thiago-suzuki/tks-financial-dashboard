@@ -2,7 +2,7 @@
 Sitio de Panel Financiero
 
 <h1 align="center">
-  <img alt="Dom Casmurro" title="Dom Casmurro" width="700" src=".github/image.png" />
+  <img alt="Dom Casmurro" title="Dom Casmurro" width="700" src="../.github/image.png" />
 </h1>
 
 <br /><br />
